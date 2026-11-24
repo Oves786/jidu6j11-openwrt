@@ -1,0 +1,25 @@
+From: Oves786 <30339311+Oves786@users.noreply.github.com>
+Subject: [PATCH] qualcommbe: enable WCSS Q6 reserved memory on JIDU6J11
+
+The shared JIDU6J11 device tree enables the WCSS remote processor.
+Upstream commit 07d8afca2af32368b1c14fb952d7bd1b4773d79c disables
+its Q6 reserved memory by default. Enable the region for this board
+family without changing the existing address, size or no-map property.
+
+This is a proposed fix and has not been hardware tested.
+---
+ target/linux/qualcommbe/dts/ipq9554-jiorouter-ax6000-jidu6j11.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/target/linux/qualcommbe/dts/ipq9554-jiorouter-ax6000-jidu6j11.dtsi b/target/linux/qualcommbe/dts/ipq9554-jiorouter-ax6000-jidu6j11.dtsi
+--- a/target/linux/qualcommbe/dts/ipq9554-jiorouter-ax6000-jidu6j11.dtsi
++++ b/target/linux/qualcommbe/dts/ipq9554-jiorouter-ax6000-jidu6j11.dtsi
+@@ -709,4 +709,8 @@
+ 
+ &q6v5_wcss {
+ 	status = "okay";
+ };
++
++&q6_region {
++	status = "okay";
++};
